@@ -36,6 +36,9 @@ fun MyApp() {
             Button(onClick = { expanded = !expanded }) {
                 Text(if (expanded) "Mostrar menos" else "Mostrar más")
             }
+            if (expanded) {
+                Text("Contenido expandido...")
+            }
         }
     }
 }
