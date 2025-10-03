@@ -26,14 +26,18 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp() {
     var expanded by remember { mutableStateOf(false) }
+    ExpandableItem(expanded = expanded, onExpandChange = { expanded = it })
+}
 
+@Composable
+fun ExpandableItem(expanded: Boolean, onExpandChange: (Boolean) -> Unit) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(onClick = { expanded = !expanded }) {
+            Button(onClick = { onExpandChange(!expanded) }) {
                 Text(if (expanded) "Mostrar menos" else "Mostrar más")
             }
             if (expanded) {
